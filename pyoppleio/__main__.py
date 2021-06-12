@@ -16,7 +16,7 @@ def main():
 
     if args.action == 'search':
         for device in OppleDevice.search():
-            print("%s\t%s" % (device.ipstr, device.macstr))
+            print("%s\t%s\t%s\t%s" % (device.id, device.ip, device.mac, device.name))
 
     elif args.action == 'set':
         if args.address is None:

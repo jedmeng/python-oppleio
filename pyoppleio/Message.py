@@ -16,7 +16,7 @@ class Message(object):
         if not header:
             offset += MESSAGE_OFFSET['BODY']
 
-        value = self.data[offset : offset + length]
+        value = self.data[offset: offset + length]
 
         if value_type == int:
             return int.from_bytes(value, 'big')
@@ -27,7 +27,7 @@ class Message(object):
         if not header:
             offset += MESSAGE_OFFSET['BODY']
 
-        self.data[offset : offset + length] = value.to_bytes(length, 'big')
+        self.data[offset: offset + length] = value.to_bytes(length, 'big')
 
     def set_checksum(self):
         crc = crc16.crc16xmodem(bytes(self.data[0x64:]))
@@ -50,10 +50,10 @@ class Message(object):
         return self.encrypt()
 
     def get_request_sn(self):
-        return self.data[MESSAGE_OFFSET['REQ_SERIAL_NUM'] : MESSAGE_OFFSET['REQ_SERIAL_NUM'] + 4]
+        return self.data[MESSAGE_OFFSET['REQ_SERIAL_NUM']: MESSAGE_OFFSET['REQ_SERIAL_NUM'] + 4]
 
     def get_response_sn(self):
-        return self.data[MESSAGE_OFFSET['RES_SERIAL_NUM'] : MESSAGE_OFFSET['RES_SERIAL_NUM'] + 4]
+        return self.data[MESSAGE_OFFSET['RES_SERIAL_NUM']: MESSAGE_OFFSET['RES_SERIAL_NUM'] + 4]
 
     def to_bytes(self):
         return bytes(self.data)

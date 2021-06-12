@@ -1,4 +1,5 @@
 import socket
+import re
 
 from . import const, Message
 
@@ -33,7 +34,7 @@ class OppleDevice(object):
         self.id = message.get(SEARCH_RES_OFFSET['ID_LOW'], 4, value_type=int)
         self.port = message.get(SEARCH_RES_OFFSET['PORT'], 2, value_type=int)
         self.version = message.get(SEARCH_RES_OFFSET['VERSION'], 4, value_type=int)
-        self.name = str(message.get(SEARCH_RES_OFFSET['NAME'], 0xE), 'gbk')
+        self.name = re.sub(r'@*$', '', str(message.get(SEARCH_RES_OFFSET['NAME'], 0xE), 'gbk'))
         self.ip_raw = message.get(SEARCH_RES_OFFSET['IP'], 4)
         self.mac_raw = message.get(SEARCH_RES_OFFSET['MAC'], 6)
 

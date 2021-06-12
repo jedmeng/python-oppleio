@@ -3,10 +3,11 @@ from setuptools import setup, find_packages
 
 setup(
     name='pyoppleio',
-    version='1.0.5',
-    keywords=('opple', 'iot'),
+    version='1.0.6',
+    keywords=['opple', 'iot'],
     description='Python library for interfacing with opple mobile control light',
-    long_description=open('README.rst', 'rt').read(),
+    long_description=open('README.md', 'rt').read(),
+    long_description_content_type='text/markdown',
     author='jedmeng',
     author_email='jedm@jedm.cn',
     url='https://github.com/jedmeng/python-oppleio',
